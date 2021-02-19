@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.book.R
+import com.example.book.databinding.LayoutBookListBinding
 
-class BooksFragmentList : Fragment(R.layout.layout_book_list) {
+class BooksFragment : Fragment() {
 
 private val booksMap: HashMap<String, BookItem> = hashMapOf()
-//private lateinit var binding: FragmentBookListBinding
+private lateinit var binding: LayoutBookListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,8 +20,6 @@ private val booksMap: HashMap<String, BookItem> = hashMapOf()
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.layout_book_list, container, false)
-
-//  binding = Book
     }
 
 
@@ -70,7 +70,8 @@ private val booksMap: HashMap<String, BookItem> = hashMapOf()
     }
 
     private fun setUpRecycler() {
-
+binding.booksItemList.layoutManager = LinearLayoutManager(context)
+binding.booksItemList.adapter = BookRecyclerViewAdapter(booksMap)
     }
 
 
