@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.book.R
 
-class BooksFragment : Fragment() {
+class BooksFragmentList : Fragment(R.layout.layout_book_list) {
 
 private val booksMap: HashMap<String, BookItem> = hashMapOf()
-//private lateinit var binding: FragmentBookBinding()
+//private lateinit var binding: FragmentBookListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

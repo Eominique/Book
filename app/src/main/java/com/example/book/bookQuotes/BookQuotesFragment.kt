@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.book.R
 import com.example.book.databinding.FragmentBookQuotesBinding
+import com.example.book.databinding.LayoutBookQuoteListBinding
 
 
 class BookQuotesFragment : Fragment(R.layout.layout_book_quote_list) {
 
-private val bookQuotesMap: HashMap<String, BookQuotesItem> = hashMapOf()
-private lateinit var binding: FragmentBookQuotesBinding
+private val bookQuotesMap = hashMapOf<String, BookQuotesItem>()
+private lateinit var binding: LayoutBookQuoteListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,10 +22,7 @@ private lateinit var binding: FragmentBookQuotesBinding
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.layout_book_quote_list, container, false)
-    binding = FragmentBookQuotesBinding.inflate(layoutInflater, container, false)
-    binding = FragmentBookQuotesBinding.bind(view!!)
-        binding.
-     }
+       }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -40,9 +38,8 @@ private lateinit var binding: FragmentBookQuotesBinding
     }
 
     private fun setUpRecycler() {
-binding.book_quote_item_list.layoutManager = LinearLayoutManager(context)
-binding.book_quote_item_list.adapter = BookQuotesRecyclerViewAdapter(bookQuotesMap)
- binding.
+binding.bookQuoteItemList.layoutManager = LinearLayoutManager(context)
+binding.bookQuoteItemList.adapter = BookQuotesRecyclerViewAdapter(bookQuotesMap)
     }
 
 

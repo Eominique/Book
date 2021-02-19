@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.book.bookQuotes.BookQuotesFragment
-import com.example.book.books.BooksFragment
+import com.example.book.books.BooksFragmentList
 import com.example.book.databinding.ActivityMainBinding
 import com.example.book.menu.MenuFragment
 import com.example.book.news.NewsFragment
@@ -22,9 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setViewPager()
         binding = ActivityMainBinding.inflate(layoutInflater)
-    }
+
+        setViewPager()
+   }
 
     private fun setViewPager() {
         binding.viewPager.adapter = getFragmentPagerAdapter()
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun createFragment(position: Int) = when (position) {
                 USER_QUOTES -> UserQuotesFragment()
-                USER_BOOKS -> BooksFragment()
+                USER_BOOKS -> BooksFragmentList()
                 BOOK_QUOTES -> BookQuotesFragment()
                 NEWS -> NewsFragment()
                 MENU -> MenuFragment()

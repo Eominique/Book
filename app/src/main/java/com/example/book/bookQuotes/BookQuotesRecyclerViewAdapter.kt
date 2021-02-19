@@ -1,6 +1,7 @@
 package com.example.book.bookQuotes
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -8,34 +9,36 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book.R
+import com.example.book.databinding.FragmentBookQuotesBinding
 
 class BookQuotesRecyclerViewAdapter(
-    private var bookQuotesMap: MutableList<BookQuotesItem>,
-    private val context: Context
+    private val bookQuotesMap: HashMap<String, BookQuotesItem>
 ) : RecyclerView.Adapter<BookQuotesRecyclerViewAdapter.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.fragment_book_quotes, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val b = FragmentBookQuotesBinding.inflate(inflater)
+        return ViewHolder(view, b)
     }
 
 
     override fun getItemCount() = bookQuotesMap.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
+val data = bookQuotesMap.toList()
+val second = data[position].second
 
-    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
-        val lytExpand = mView.findViewById(R.id.lyt_expand) as View
-        val expand = mView.findViewById(R.id.bt_expand) as ImageButton
+holder.binding.bookTitle.text = second.bookTitle
+holder.binding.quoteContent.text = second.content
+        holder.binding.userName.text = second.userName
 
-        val bookTitle = mView.findViewById<TextView>(R.id.bookTitle)!!
-        val quoteContent = mView.findViewById<TextView>(R.id.quoteContent)!!
-        val listener: LinearLayout = mView.findViewById(R.id.book_quotes_listener)
     }
 
 
-
+    inner class ViewHolder(mView: View, val binding: FragmentBookQuotesBinding) :
+        RecyclerView.ViewHolder(mView)
 
 }
