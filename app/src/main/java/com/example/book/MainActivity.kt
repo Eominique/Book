@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.navigationB.setOnNavigationItemSelectedListener(
             getBottomNavigationItemSelectorListener()        )
   //?
- //     binding.viewPager.addOnPageChangeListener(getOnPageChangeListener())
+  //    binding.viewPager.addOnPageChangeListener(getOnPageChangeListener())
        binding.viewPager.offscreenPageLimit = 5
     }
 
